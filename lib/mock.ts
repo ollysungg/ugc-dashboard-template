@@ -41,21 +41,22 @@ export const calendar: { day: number; videos: number; earned: number }[] = Array
 
 export const stats = { streak: 19, viewsToday: "14K", postsToday: 3 };
 
-export type Creator = { name: string; views: string; videos: number; color: string };
+export type Creator = { name: string; views: string; videos: number; color: string; pic?: string };
 export const creators: Creator[] = [
-  { name: "maya.films", views: "18.2M", videos: 37, color: "#F97316" },
-  { name: "jordan.ugc", views: "11.4M", videos: 30, color: "#0EA5E9" },
-  { name: "sam.creates", views: "9.8M", videos: 23, color: "#A855F7" },
+  { name: "mycherievy", views: "18.2M", videos: 37, color: "#F97316", pic: "/ideas/v1.jpg" },
+  { name: "wendy.studying", views: "11.4M", videos: 30, color: "#0EA5E9", pic: "/ideas/v2.jpg" },
+  { name: "bigspoonx19", views: "9.8M", videos: 23, color: "#A855F7", pic: "/ideas/v5.jpg" },
 ];
 
-export type IdeaVideo = { id: string; caption: string; creator: string; platform: Platform; views: string; outlier: string; hue: number };
+// real ugc outliers (short silent loops in public/ideas)
+export type IdeaVideo = { id: string; caption: string; creator: string; platform: Platform; views: string; outlier: string; src: string; poster: string };
 export const ideaVideos: IdeaVideo[] = [
-  { id: "v1", caption: "pov: you finally found an app that does this", creator: "maya.films", platform: "tiktok", views: "8.1M", outlier: "100x", hue: 200 },
-  { id: "v2", caption: "3 things i wish i knew before my first brand deal", creator: "jordan.ugc", platform: "instagram", views: "4.5M", outlier: "62x", hue: 280 },
-  { id: "v3", caption: "this is your sign to stop doing it manually", creator: "sam.creates", platform: "tiktok", views: "3.9M", outlier: "48x", hue: 20 },
-  { id: "v4", caption: "my morning routine but it's actually useful", creator: "maya.films", platform: "instagram", views: "2.7M", outlier: "31x", hue: 160 },
-  { id: "v5", caption: "rating every tool i used this month", creator: "jordan.ugc", platform: "youtube", views: "1.9M", outlier: "22x", hue: 330 },
-  { id: "v6", caption: "nobody talks about this setting", creator: "sam.creates", platform: "tiktok", views: "1.2M", outlier: "14x", hue: 50 },
+  { id: "v1", caption: "how it feels after the call ends", creator: "mycherievy", platform: "instagram", views: "7.4M", outlier: "100x", src: "/ideas/v1.mp4", poster: "/ideas/v1.jpg" },
+  { id: "v2", caption: "trying to get rejected from a university with a 100% acceptance rate", creator: "wendy.studying", platform: "tiktok", views: "4.6M", outlier: "62x", src: "/ideas/v2.mp4", poster: "/ideas/v2.jpg" },
+  { id: "v3", caption: "pov: you finally mastered 3d websites", creator: "webloved", platform: "tiktok", views: "3.6M", outlier: "48x", src: "/ideas/v3.mp4", poster: "/ideas/v3.jpg" },
+  { id: "v4", caption: "bro is living in 2099", creator: "jacob.scruggmp4", platform: "instagram", views: "3.5M", outlier: "31x", src: "/ideas/v4.mp4", poster: "/ideas/v4.jpg" },
+  { id: "v5", caption: "facetiming and texting is getting dry for my long distance gf and me", creator: "bigspoonx19", platform: "instagram", views: "2.6M", outlier: "22x", src: "/ideas/v5.mp4", poster: "/ideas/v5.jpg" },
+  { id: "v6", caption: "you don't need a part time job", creator: "tiasia.ugc", platform: "instagram", views: "1.8M", outlier: "14x", src: "/ideas/v6.mp4", poster: "/ideas/v6.jpg" },
 ];
 
 export type Batch = { id: string; brand: string; title: string; state: "draft" | "editing" | "review" | "approved"; editor?: string; done?: number; total?: number; turnaround?: string };

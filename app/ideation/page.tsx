@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Bookmark, BookmarkCheck, Eye, Play, Plus, Search } from "lucide-react";
+import { Bookmark, BookmarkCheck, Eye, Plus, Search } from "lucide-react";
 import { brands, creators, ideaVideos } from "@/lib/mock";
 import { BrandTile, Button, Card, NotHooked, PlatformIcon, cx } from "@/components/ui";
 
@@ -95,8 +95,11 @@ export default function IdeationPage() {
                   </div>
                   {creators.map((c, i) => (
                     <div key={c.name} className="flex flex-col items-center gap-0.5 text-xs">
-                      <span className="relative flex h-12 w-12 items-center justify-center rounded-full text-sm font-semibold text-white" style={{ background: c.color }}>
-                        {c.name[0].toUpperCase()}
+                      <span
+                        className="relative flex h-12 w-12 items-center justify-center rounded-full bg-cover bg-center text-sm font-semibold text-white"
+                        style={{ backgroundColor: c.color, backgroundImage: c.pic ? `url(${c.pic})` : undefined }}
+                      >
+                        {!c.pic && c.name[0].toUpperCase()}
                         <span className="absolute -left-1 -top-1 flex h-4 w-4 items-center justify-center rounded-full bg-ink text-[9px] text-white">{i + 1}</span>
                       </span>
                       <span className="mt-1 font-medium">{c.name}</span>
@@ -142,9 +145,9 @@ export default function IdeationPage() {
                 {shown.map((v, i) => (
                   <div
                     key={v.id}
-                    className="relative aspect-[9/14] overflow-hidden rounded-[14px] text-white"
-                    style={{ background: `linear-gradient(160deg, hsl(${v.hue} 45% 40%), hsl(${v.hue + 40} 50% 14%))` }}
+                    className="relative aspect-[9/14] overflow-hidden rounded-[14px] bg-[#111] text-white"
                   >
+                    <video src={v.src} poster={v.poster} autoPlay muted loop playsInline preload="metadata" className="absolute inset-0 h-full w-full object-cover" />
                     <div className="absolute left-2.5 top-2.5 flex gap-1.5 text-[11px]">
                       <span className="rounded-md bg-[#DDF6E2] px-1.5 py-0.5 font-semibold text-[#2E7D46]">{v.outlier}</span>
                       <span className="rounded-md bg-black/50 px-1.5 py-0.5">#{i + 1}</span>
@@ -152,11 +155,6 @@ export default function IdeationPage() {
                     <button onClick={() => toggle(v.id)} className="absolute right-2.5 top-2.5 rounded-lg bg-white p-1.5 text-ink" aria-label="save">
                       {saved.includes(v.id) ? <BookmarkCheck size={15} className="text-brand" /> : <Bookmark size={15} />}
                     </button>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="rounded-full bg-black/40 p-3">
-                        <Play size={20} fill="white" />
-                      </span>
-                    </div>
                     <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-3 pt-10">
                       <div className="line-clamp-2 text-[13px] font-medium">{v.caption}</div>
                       <div className="mt-2 flex items-center justify-between text-xs">
