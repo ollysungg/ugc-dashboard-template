@@ -7,8 +7,8 @@ export type Platform = "tiktok" | "instagram" | "youtube" | "facebook";
 export type Brand = {
   id: string;
   name: string;
-  /** tile colour behind the brand's initial (stand-in for a logo) */
-  color: string;
+  /** logo in /public/brands */
+  logo: string;
   pay: string;
   perDay: number;
   avg: number;
@@ -21,12 +21,12 @@ export type Brand = {
 export const user = { first: "Alex", handle: "@alexmakesugc", initials: "AL" };
 
 export const brands: Brand[] = [
-  { id: "glowly", name: "Glowly", color: "#F59E0B", pay: "$25 / video", perDay: 3, avg: 61, earned: 4400, status: "Active", needsAccounts: false, platforms: ["tiktok", "instagram", "youtube"] },
-  { id: "novapay", name: "Novapay", color: "#2563EB", pay: "$30 / video", perDay: 2, avg: 44, earned: 2780, status: "Active", needsAccounts: true, platforms: ["tiktok", "instagram"] },
-  { id: "drift", name: "Drift Notes", color: "#111111", pay: "$20 / video", perDay: 3, avg: 28, earned: 1590, status: "Active", needsAccounts: false, platforms: ["instagram", "facebook"] },
-  { id: "pebble", name: "Pebble AI", color: "#7C3AED", pay: "$500 / mo + $1 / 1k", perDay: 1, avg: 36, earned: 1080, status: "Active", needsAccounts: true, platforms: ["tiktok"] },
-  { id: "sprout", name: "Sprout", color: "#16A34A", pay: "$15 / video", perDay: 2, avg: 19, earned: 745, status: "Active", needsAccounts: false, platforms: ["tiktok", "youtube"] },
-  { id: "lumen", name: "Lumen", color: "#DB2777", pay: "$25 / video", perDay: 0, avg: 22, earned: 286, status: "Paused", needsAccounts: false, platforms: ["instagram"] },
+  { id: "liftoff", name: "Liftoff", logo: "/brands/liftoff.png", pay: "$25 / video", perDay: 3, avg: 61, earned: 4400, status: "Active", needsAccounts: true, platforms: ["tiktok", "youtube", "facebook", "instagram"] },
+  { id: "turbo", name: "Turbo", logo: "/brands/turbo.png", pay: "$25 / video", perDay: 3, avg: 44, earned: 2780, status: "Active", needsAccounts: true, platforms: ["instagram", "facebook"] },
+  { id: "candle", name: "Candle", logo: "/brands/candle.png", pay: "$20 / video", perDay: 2, avg: 28, earned: 1590, status: "Active", needsAccounts: false, platforms: ["instagram", "tiktok", "facebook"] },
+  { id: "pumpfun", name: "Pumpfun", logo: "/brands/pumpfun.png", pay: "$500 / mo + $1 / 1k", perDay: 2, avg: 36, earned: 1080, status: "Active", needsAccounts: false, platforms: ["instagram"] },
+  { id: "composio", name: "Composio", logo: "/brands/composio.png", pay: "$15 / video", perDay: 2, avg: 19, earned: 745, status: "Active", needsAccounts: false, platforms: ["instagram", "tiktok", "youtube"] },
+  { id: "ideogram", name: "Ideogram", logo: "/brands/ideogram.png", pay: "$25 / video", perDay: 0, avg: 22, earned: 286, status: "Paused", needsAccounts: false, platforms: ["instagram"] },
 ];
 
 export const brandById = (id: string) => brands.find((b) => b.id === id) ?? brands[0];
@@ -60,35 +60,35 @@ export const ideaVideos: IdeaVideo[] = [
 
 export type Batch = { id: string; brand: string; title: string; state: "draft" | "editing" | "review" | "approved"; editor?: string; done?: number; total?: number; turnaround?: string };
 export const batches: Batch[] = [
-  { id: "b1", brand: "novapay", title: "Novapay. nov 1", state: "draft" },
-  { id: "b2", brand: "glowly", title: "Glowly. oct 30", state: "editing", editor: "Riley", done: 4, total: 10, turnaround: "due in 6h" },
-  { id: "b3", brand: "drift", title: "Drift Notes. oct 28", state: "review", editor: "Riley", done: 8, total: 8, turnaround: "7h 12m" },
-  { id: "b4", brand: "glowly", title: "Glowly. oct 25", state: "approved", editor: "Casey", done: 12, total: 12, turnaround: "5h 14m" },
-  { id: "b5", brand: "pebble", title: "Pebble AI. oct 22", state: "approved", editor: "Casey", done: 6, total: 6, turnaround: "9h 34m" },
+  { id: "b1", brand: "turbo", title: "Turbo. nov 1", state: "draft" },
+  { id: "b2", brand: "liftoff", title: "Liftoff. oct 30", state: "editing", editor: "Riley", done: 4, total: 10, turnaround: "due in 6h" },
+  { id: "b3", brand: "candle", title: "Candle. oct 28", state: "review", editor: "Riley", done: 8, total: 8, turnaround: "7h 12m" },
+  { id: "b4", brand: "liftoff", title: "Liftoff. oct 25", state: "approved", editor: "Casey", done: 12, total: 12, turnaround: "5h 14m" },
+  { id: "b5", brand: "pumpfun", title: "Pumpfun. oct 22", state: "approved", editor: "Casey", done: 6, total: 6, turnaround: "9h 34m" },
 ];
 
 export type Post = { id: string; brand: string; day: number; time: string; caption: string; state: "queued" | "posted" };
 export const weekDays = ["Sun 26", "Mon 27", "Tue 28", "Wed 29", "Thu 30", "Fri 31", "Sat 1"];
 export const posts: Post[] = [
-  { id: "p1", brand: "glowly", day: 0, time: "9:00 am", caption: "pov: your skin finally listens", state: "posted" },
-  { id: "p2", brand: "novapay", day: 0, time: "1:30 pm", caption: "splitting rent in 4 seconds", state: "posted" },
-  { id: "p3", brand: "drift", day: 1, time: "10:15 am", caption: "my notes app era is over", state: "posted" },
-  { id: "p4", brand: "glowly", day: 2, time: "9:00 am", caption: "3 step routine, 0 effort", state: "posted" },
-  { id: "p5", brand: "sprout", day: 3, time: "12:00 pm", caption: "plants i can't kill", state: "posted" },
-  { id: "p6", brand: "pebble", day: 4, time: "6:00 pm", caption: "i let ai plan my week", state: "posted" },
-  { id: "p7", brand: "glowly", day: 5, time: "9:00 am", caption: "the night before a shoot", state: "queued" },
-  { id: "p8", brand: "novapay", day: 5, time: "3:00 pm", caption: "group trip math, solved", state: "queued" },
-  { id: "p9", brand: "drift", day: 6, time: "11:00 am", caption: "how i plan 30 videos in an hour", state: "queued" },
+  { id: "p1", brand: "liftoff", day: 0, time: "9:00 am", caption: "pov: you finally learned to fly", state: "posted" },
+  { id: "p2", brand: "turbo", day: 0, time: "1:30 pm", caption: "my edits got 3x faster", state: "posted" },
+  { id: "p3", brand: "candle", day: 1, time: "10:15 am", caption: "the app that keeps me focused", state: "posted" },
+  { id: "p4", brand: "liftoff", day: 2, time: "9:00 am", caption: "lesson 1 vs lesson 10", state: "posted" },
+  { id: "p5", brand: "composio", day: 3, time: "12:00 pm", caption: "i automated my whole inbox", state: "posted" },
+  { id: "p6", brand: "pumpfun", day: 4, time: "6:00 pm", caption: "i launched a coin in 60 seconds", state: "posted" },
+  { id: "p7", brand: "liftoff", day: 5, time: "9:00 am", caption: "first solo flight", state: "queued" },
+  { id: "p8", brand: "turbo", day: 5, time: "3:00 pm", caption: "editing on my phone now", state: "queued" },
+  { id: "p9", brand: "candle", day: 6, time: "11:00 am", caption: "how i plan 30 videos in an hour", state: "queued" },
 ];
 
 export type Account = { id: string; brand: string; handle: string; platform: Platform; followers: string; views: string; likes: string; comments: string; engagement: string; scheduler: boolean };
 export const accounts: Account[] = [
-  { id: "a1", brand: "glowly", handle: "@glowwithalex", platform: "tiktok", followers: "12.4K", views: "1.2M", likes: "88K", comments: "1.9K", engagement: "7.4%", scheduler: true },
-  { id: "a2", brand: "glowly", handle: "@glowwithalex", platform: "instagram", followers: "6.1K", views: "430K", likes: "31K", comments: "640", engagement: "7.3%", scheduler: true },
-  { id: "a3", brand: "novapay", handle: "@alexsplitsit", platform: "tiktok", followers: "3.3K", views: "210K", likes: "12K", comments: "310", engagement: "5.8%", scheduler: false },
-  { id: "a4", brand: "drift", handle: "@driftwithalex", platform: "instagram", followers: "2.8K", views: "160K", likes: "9.1K", comments: "220", engagement: "5.8%", scheduler: true },
-  { id: "a5", brand: "pebble", handle: "@alexasksai", platform: "tiktok", followers: "1.9K", views: "98K", likes: "5.2K", comments: "140", engagement: "5.4%", scheduler: false },
-  { id: "a6", brand: "sprout", handle: "@alexgrows", platform: "youtube", followers: "940", views: "51K", likes: "2.3K", comments: "60", engagement: "4.6%", scheduler: false },
+  { id: "a1", brand: "liftoff", handle: "@alexflies", platform: "tiktok", followers: "12.4K", views: "1.2M", likes: "88K", comments: "1.9K", engagement: "7.4%", scheduler: true },
+  { id: "a2", brand: "liftoff", handle: "@alexflies", platform: "instagram", followers: "6.1K", views: "430K", likes: "31K", comments: "640", engagement: "7.3%", scheduler: true },
+  { id: "a3", brand: "turbo", handle: "@alexedits", platform: "tiktok", followers: "3.3K", views: "210K", likes: "12K", comments: "310", engagement: "5.8%", scheduler: false },
+  { id: "a4", brand: "candle", handle: "@alexfocus", platform: "instagram", followers: "2.8K", views: "160K", likes: "9.1K", comments: "220", engagement: "5.8%", scheduler: true },
+  { id: "a5", brand: "pumpfun", handle: "@alexcoins", platform: "tiktok", followers: "1.9K", views: "98K", likes: "5.2K", comments: "140", engagement: "5.4%", scheduler: false },
+  { id: "a6", brand: "composio", handle: "@alexbuilds", platform: "youtube", followers: "940", views: "51K", likes: "2.3K", comments: "60", engagement: "4.6%", scheduler: false },
 ];
 
 export const transcripts = [
@@ -117,13 +117,13 @@ export const emailCodes = [
 ];
 
 export const startingEmails = [
-  { address: "alex-6m7jrp@yourdomain.com", note: "Instagram. Glowly", created: "2d ago" },
-  { address: "alex-jasxuj@yourdomain.com", note: "TikTok. Novapay", created: "9d ago" },
-  { address: "alex-i35x4k@yourdomain.com", note: "TikTok. Pebble AI", created: "13d ago" },
+  { address: "alex-6m7jrp@yourdomain.com", note: "Instagram. Liftoff", created: "2d ago" },
+  { address: "alex-jasxuj@yourdomain.com", note: "TikTok. Turbo", created: "9d ago" },
+  { address: "alex-i35x4k@yourdomain.com", note: "TikTok. Pumpfun", created: "13d ago" },
 ];
 
 export const variationRenders = [
-  { id: "r1", brand: "glowly", title: "hook swap x5", status: "Ready", count: 5 },
-  { id: "r2", brand: "novapay", title: "caption styles x3", status: "Ready", count: 3 },
-  { id: "r3", brand: "drift", title: "music swap x4", status: "Rendering", count: 4 },
+  { id: "r1", brand: "liftoff", title: "hook swap x5", status: "Ready", count: 5 },
+  { id: "r2", brand: "turbo", title: "caption styles x3", status: "Ready", count: 3 },
+  { id: "r3", brand: "candle", title: "music swap x4", status: "Rendering", count: 4 },
 ];

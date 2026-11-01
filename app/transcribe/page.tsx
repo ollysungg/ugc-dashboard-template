@@ -20,7 +20,7 @@ export default function TranscribePage() {
 
   return (
     <div>
-      <h1 className="mb-5 text-[28px] font-semibold tracking-tight">Transcribe</h1>
+      <h1 className="mb-5 text-2xl font-semibold tracking-[-0.01em]">Transcribe</h1>
       <div className="flex gap-2">
         <div className="flex flex-1 items-center gap-2 rounded-[14px] border border-line p-1.5 pl-3.5">
           <input value={url} onChange={(e) => setUrl(e.target.value)} placeholder="Paste a TikTok, Instagram, or YouTube URL" className="flex-1 text-sm outline-none" />

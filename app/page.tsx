@@ -1,6 +1,6 @@
 import { Info, Video } from "lucide-react";
 import { brands, calendar, month, stats, user } from "@/lib/mock";
-import { Card, cx, money } from "@/components/ui";
+import { BrandTile, Card, cx, money } from "@/components/ui";
 
 const weekdays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
@@ -70,7 +70,7 @@ export default function DashboardPage() {
               <div
                 key={d.day}
                 className={cx(
-                  "flex aspect-square flex-col items-center justify-center rounded-[10px] border text-center",
+                  "flex aspect-square flex-col items-center justify-center rounded-lg border text-center",
                   shade(d.earned),
                   d.day === today && "ring-1 ring-brand",
                 )}
@@ -121,7 +121,7 @@ export default function DashboardPage() {
                 <div key={b.id}>
                   <div className="flex items-center justify-between text-sm">
                     <span className="flex items-center gap-2">
-                      <span className="h-4 w-4 rounded" style={{ background: b.color }} />
+                      <BrandTile id={b.id} size={20} />
                       {b.name}
                     </span>
                     <span>{money(b.earned)}</span>

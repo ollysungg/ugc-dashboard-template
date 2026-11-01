@@ -33,18 +33,18 @@ export default function CampaignsPage() {
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
-        <h1 className="text-[28px] font-semibold tracking-tight">Campaigns</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">Campaigns</h1>
         <Button variant="primary">
           <Plus size={16} /> New campaign
         </Button>
       </div>
 
-      <div className="mb-4 inline-flex rounded-[10px] bg-side p-1">
+      <div className="mb-4 inline-flex rounded-lg bg-[#EFEFF0] p-0.5">
         {ranges.map((r) => (
           <button
             key={r}
             onClick={() => setRange(r)}
-            className={cx("rounded-lg px-3 py-1 text-sm", r === range ? "bg-white font-medium shadow-sm" : "text-[#444]")}
+            className={cx("h-7 rounded-md px-2.5 text-[13px] font-medium", r === range ? "bg-white shadow-[0_1px_2px_rgba(0,0,0,.08),0_0_0_.5px_rgba(0,0,0,.04)]" : "text-[#52525B]")}
           >
             {r}
           </button>
@@ -53,8 +53,8 @@ export default function CampaignsPage() {
 
       <div className="grid gap-4 md:grid-cols-[1.2fr_1fr_1.1fr]">
         <Card className="p-5">
-          <div className="flex justify-between text-[15px] font-medium">
-            Earned this month <span className="text-xs font-normal text-muted">All campaigns</span>
+          <div className="flex items-baseline justify-between gap-2 text-[15px] font-medium">
+            Earned this month <span className="whitespace-nowrap text-xs font-normal text-muted">All campaigns</span>
           </div>
           <div className="mt-2 text-[34px] font-semibold tracking-tight text-money">{money(total)}</div>
           <div className="mt-3 h-2 rounded-full bg-[#ECECEC]">
@@ -65,8 +65,8 @@ export default function CampaignsPage() {
           </div>
         </Card>
         <Card className="p-5">
-          <div className="flex justify-between text-[15px] font-medium">
-            Videos posted <span className="text-xs font-normal text-muted">This month</span>
+          <div className="flex items-baseline justify-between gap-2 text-[15px] font-medium">
+            Videos posted <span className="whitespace-nowrap text-xs font-normal text-muted">This month</span>
           </div>
           <div className="mt-2 text-[34px] font-semibold tracking-tight">{videos}</div>
           <div className="mt-8 text-sm text-muted">
@@ -98,24 +98,24 @@ export default function CampaignsPage() {
 
       <Card className="mt-4 overflow-hidden p-3">
         <div className="mb-3 flex flex-wrap items-center gap-2">
-          <div className="inline-flex rounded-[10px] bg-side p-1">
+          <div className="inline-flex rounded-lg bg-[#EFEFF0] p-0.5">
             {tabs.map((t) => (
               <button
                 key={t}
                 onClick={() => setTab(t)}
-                className={cx("rounded-lg px-3 py-1 text-sm", t === tab ? "bg-white font-medium shadow-sm" : "text-[#444]")}
+                className={cx("h-7 rounded-md px-2.5 text-[13px] font-medium", t === tab ? "bg-white shadow-[0_1px_2px_rgba(0,0,0,.08),0_0_0_.5px_rgba(0,0,0,.04)]" : "text-[#52525B]")}
               >
                 {t} <span className="ml-1 text-xs text-muted">{count(t)}</span>
               </button>
             ))}
           </div>
-          <label className="ml-auto flex items-center gap-2 rounded-[10px] border border-line px-3 py-2 text-sm">
+          <label className="ml-auto flex items-center gap-2 rounded-lg border border-line px-3 py-2 text-sm">
             <Search size={15} className="text-muted" />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="search campaigns" className="w-40 outline-none" />
           </label>
         </div>
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[720px] text-sm">
+          <table className="w-full min-w-[640px] text-sm">
             <thead>
               <tr className="whitespace-nowrap bg-side text-left text-[13px] text-muted">
                 <th className="rounded-l-lg px-3 py-2.5 font-normal">Campaign</th>

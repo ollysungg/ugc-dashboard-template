@@ -61,7 +61,7 @@ export default function FilmPage() {
 
   return (
     <div>
-      <h1 className="mb-5 text-[28px] font-semibold tracking-tight">Film</h1>
+      <h1 className="mb-5 text-2xl font-semibold tracking-[-0.01em]">Film</h1>
       <div className="mb-4 flex items-center justify-center gap-2 text-sm text-muted">
         Filming for
         <label className="relative flex items-center gap-2 rounded-full border border-line py-1.5 pl-1.5 pr-3 font-semibold text-ink">

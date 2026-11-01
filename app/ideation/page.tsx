@@ -19,7 +19,7 @@ export default function IdeationPage() {
   return (
     <div>
       <div className="mb-5 flex flex-wrap items-baseline gap-3">
-        <h1 className="text-[28px] font-semibold tracking-tight">Ideation</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">Ideation</h1>
         <span className="text-sm text-muted">
           <b className="text-ink">{saved.length - filmed.length}</b> to film this week · <b className="text-ink">{filmed.length}</b> done ·{" "}
           <b className="text-ink">{ideaVideos.length}</b> in bank
@@ -29,7 +29,7 @@ export default function IdeationPage() {
       <div className="no-scrollbar mb-4 flex gap-2 overflow-x-auto">
         <button
           onClick={() => setBrand("all")}
-          className={cx("shrink-0 rounded-[10px] border px-3.5 py-2 text-sm", brand === "all" ? "border-transparent bg-side font-medium" : "border-line")}
+          className={cx("shrink-0 rounded-lg border px-3.5 py-2 text-sm", brand === "all" ? "border-transparent bg-side font-medium" : "border-line")}
         >
           All brands
         </button>
@@ -37,16 +37,16 @@ export default function IdeationPage() {
           <button
             key={b.id}
             onClick={() => setBrand(b.id)}
-            className={cx("flex shrink-0 items-center gap-2 rounded-[10px] border px-3 py-1.5 text-sm", brand === b.id ? "border-transparent bg-side font-medium" : "border-line")}
+            className={cx("flex shrink-0 items-center gap-2 rounded-lg border px-3 py-1.5 text-sm", brand === b.id ? "border-transparent bg-side font-medium" : "border-line")}
           >
             <BrandTile id={b.id} size={22} /> {b.name} <span className="text-xs text-muted">0/{[140, 6, 14, 21, 9, 3][i]}</span>
           </button>
         ))}
       </div>
 
-      <div className="mb-5 inline-flex rounded-[10px] bg-side p-1">
+      <div className="mb-5 inline-flex rounded-lg bg-[#EFEFF0] p-0.5">
         {tabs.map((t) => (
-          <button key={t} onClick={() => setTab(t)} className={cx("rounded-lg px-3 py-1.5 text-sm", t === tab ? "bg-white font-medium shadow-sm" : "text-[#444]")}>
+          <button key={t} onClick={() => setTab(t)} className={cx("h-7 rounded-md px-2.5 text-[13px] font-medium", t === tab ? "bg-white shadow-[0_1px_2px_rgba(0,0,0,.08),0_0_0_.5px_rgba(0,0,0,.04)]" : "text-[#52525B]")}>
             {t}
           </button>
         ))}
@@ -63,12 +63,12 @@ export default function IdeationPage() {
           ].map(([l, v]) => (
             <div key={l}>
               <div className="mb-1.5 text-[13px] text-muted">{l}</div>
-              <div className="rounded-[10px] border border-line px-3 py-2 text-sm">{v}</div>
+              <div className="rounded-lg border border-line px-3 py-2 text-sm">{v}</div>
             </div>
           ))}
           <div>
             <div className="mb-1.5 text-[13px] text-muted">Platform</div>
-            <div className="flex gap-1 rounded-[10px] bg-side p-1">
+            <div className="flex gap-1 rounded-lg bg-side p-1">
               <span className="flex-1 rounded-lg bg-white py-1 text-center text-sm shadow-sm">All</span>
               {(["instagram", "tiktok", "youtube"] as const).map((p) => (
                 <span key={p} className="flex flex-1 items-center justify-center">
@@ -119,7 +119,7 @@ export default function IdeationPage() {
                       type="checkbox"
                       checked={filmed.includes(v.id)}
                       onChange={() => setFilmed((f) => (f.includes(v.id) ? f.filter((x) => x !== v.id) : [...f, v.id]))}
-                      className="h-4 w-4 accent-[#4DB6A0]"
+                      className="h-4 w-4 accent-[#00BDAB]"
                     />
                     <span className={cx("flex-1", filmed.includes(v.id) && "text-muted line-through")}>{v.caption}</span>
                     <span className="text-xs text-muted">{v.creator}</span>
@@ -132,7 +132,7 @@ export default function IdeationPage() {
           {tab !== "Planner" && (
             <>
               <div className="flex gap-2">
-                <label className="flex flex-1 items-center gap-2 rounded-[10px] border border-line px-3 py-2 text-sm">
+                <label className="flex flex-1 items-center gap-2 rounded-lg border border-line px-3 py-2 text-sm">
                   <Search size={15} className="text-muted" />
                   <input placeholder="search videos" className="w-full outline-none" />
                 </label>

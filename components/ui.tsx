@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Facebook, Instagram, Plug, Youtube } from "lucide-react";
+import { Plug } from "lucide-react";
 import { brandById, type Platform } from "@/lib/mock";
 
 export function cx(...c: (string | false | null | undefined)[]) {
@@ -25,7 +25,7 @@ export function Button({
     <button
       {...rest}
       className={cx(
-        "inline-flex items-center justify-center gap-2 rounded-[10px] border px-3.5 py-2 text-sm font-medium transition disabled:opacity-50",
+        "inline-flex h-9 items-center justify-center gap-1.5 rounded-lg border px-3 text-[13px] font-medium transition disabled:opacity-50",
         look,
         className,
       )}
@@ -39,7 +39,7 @@ export function PageHeader({ title, sub, children }: { title: string; sub?: Reac
   return (
     <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
       <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h1 className="text-[28px] font-semibold tracking-tight">{title}</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">{title}</h1>
         {sub && <div className="text-sm text-muted">{sub}</div>}
       </div>
       {children && <div className="flex flex-wrap items-center gap-2">{children}</div>}
@@ -47,32 +47,27 @@ export function PageHeader({ title, sub, children }: { title: string; sub?: Reac
   );
 }
 
-/** A square tile with the brand's initial, standing in for its logo. */
+/** The brand's logo on a rounded square, like the real campaigns list. */
 export function BrandTile({ id, size = 36 }: { id: string; size?: number }) {
   const b = brandById(id);
   return (
-    <span
-      className="inline-flex shrink-0 items-center justify-center rounded-[9px] font-semibold text-white"
-      style={{ background: b.color, width: size, height: size, fontSize: size * 0.42 }}
-    >
-      {b.name[0]}
-    </span>
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={b.logo}
+      alt=""
+      width={size}
+      height={size}
+      className="shrink-0 rounded-[9px] border border-black/5 bg-white object-cover"
+      style={{ width: size, height: size, borderRadius: size * 0.25 }}
+    />
   );
 }
 
-function TikTok({ size = 16 }: { size?: number }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path d="M16.6 5.82A4.28 4.28 0 0 1 15.54 3h-3.09v12.4a2.59 2.59 0 1 1-2.59-2.59c.27 0 .53.04.77.12V9.77a5.7 5.7 0 0 0-.77-.05A5.68 5.68 0 1 0 15.54 15.4V9.01a7.35 7.35 0 0 0 4.3 1.38V7.3a4.28 4.28 0 0 1-3.24-1.48Z" />
-    </svg>
-  );
-}
+const platformFile: Record<Platform, string> = { tiktok: "tiktok.svg", instagram: "ig.svg", youtube: "yt.svg", facebook: "fb.png" };
 
 export function PlatformIcon({ p, size = 16 }: { p: Platform; size?: number }) {
-  if (p === "tiktok") return <TikTok size={size} />;
-  if (p === "instagram") return <Instagram size={size} className="text-[#E1306C]" />;
-  if (p === "youtube") return <Youtube size={size} className="text-[#FF0000]" />;
-  return <Facebook size={size} className="text-[#1877F2]" />;
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={`/platforms/${platformFile[p]}`} alt={p} width={size} height={size} className="inline-block shrink-0" style={{ width: size, height: size }} />;
 }
 
 /**

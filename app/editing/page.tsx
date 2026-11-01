@@ -24,7 +24,7 @@ export default function EditingPage() {
   return (
     <div>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-        <h1 className="text-[28px] font-semibold tracking-tight">Your batches</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">Your batches</h1>
         <div className="flex flex-wrap gap-2">
           <Button>
             <FolderOpen size={15} /> Library
@@ -48,14 +48,14 @@ export default function EditingPage() {
       )}
 
       <div className="mb-4 flex flex-wrap items-center gap-2">
-        <div className="inline-flex rounded-[10px] bg-side p-1">
+        <div className="inline-flex rounded-lg bg-[#EFEFF0] p-0.5">
           {tabs.map((t) => (
-            <button key={t} onClick={() => setTab(t)} className={cx("rounded-lg px-3 py-1 text-sm", t === tab ? "bg-white font-medium shadow-sm" : "text-[#444]")}>
+            <button key={t} onClick={() => setTab(t)} className={cx("h-7 rounded-md px-2.5 text-[13px] font-medium", t === tab ? "bg-white shadow-[0_1px_2px_rgba(0,0,0,.08),0_0_0_.5px_rgba(0,0,0,.04)]" : "text-[#52525B]")}>
               {t}
             </button>
           ))}
         </div>
-        <label className="flex flex-1 items-center gap-2 rounded-[10px] border border-line px-3 py-2 text-sm">
+        <label className="flex flex-1 items-center gap-2 rounded-lg border border-line px-3 py-2 text-sm">
           <Search size={15} className="text-muted" />
           <input placeholder="Find a batch or editor" className="w-full outline-none" />
         </label>

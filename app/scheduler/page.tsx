@@ -12,8 +12,8 @@ export default function SchedulerPage() {
   const [only, setOnly] = useState("all");
   const [list, setList] = useState<Post[]>(posts);
   const [ready, setReady] = useState([
-    { brand: "glowly", n: 10 },
-    { brand: "drift", n: 8 },
+    { brand: "liftoff", n: 10 },
+    { brand: "candle", n: 8 },
   ]);
   const [note, setNote] = useState(false);
 
@@ -43,7 +43,7 @@ export default function SchedulerPage() {
     <div>
       <div className="mb-5 flex items-start justify-between">
         <div>
-          <h1 className="text-[28px] font-semibold tracking-tight">Scheduler</h1>
+          <h1 className="text-2xl font-semibold tracking-[-0.01em]">Scheduler</h1>
           <p className="mt-1 text-sm text-muted">4 slots open this week</p>
         </div>
         <Button variant="primary">
@@ -108,26 +108,26 @@ export default function SchedulerPage() {
         </div>
       )}
 
-      <div className="mb-3 inline-flex rounded-[10px] bg-side p-1">
+      <div className="mb-3 inline-flex rounded-lg bg-[#EFEFF0] p-0.5">
         {tabs.map((t) => (
-          <button key={t} onClick={() => setTab(t)} className={cx("rounded-lg px-3 py-1.5 text-sm", t === tab ? "bg-white font-medium shadow-sm" : "text-[#444]")}>
+          <button key={t} onClick={() => setTab(t)} className={cx("h-7 rounded-md px-2.5 text-[13px] font-medium", t === tab ? "bg-white shadow-[0_1px_2px_rgba(0,0,0,.08),0_0_0_.5px_rgba(0,0,0,.04)]" : "text-[#52525B]")}>
             {t}
           </button>
         ))}
       </div>
 
       <div className="mb-3 flex flex-wrap gap-2">
-        <span className="flex items-center gap-1.5 rounded-[10px] border border-line px-3 py-1.5 text-sm">
+        <span className="flex items-center gap-1.5 rounded-lg border border-line px-3 py-1.5 text-sm">
           <Globe size={14} /> Times in <b>New York</b>
         </span>
-        <button onClick={() => setOnly("all")} className={cx("rounded-[10px] border px-3 py-1.5 text-sm", only === "all" ? "border-transparent bg-side font-medium" : "border-line")}>
+        <button onClick={() => setOnly("all")} className={cx("rounded-lg border px-3 py-1.5 text-sm", only === "all" ? "border-transparent bg-side font-medium" : "border-line")}>
           All
         </button>
         {brands.map((b) => (
           <button
             key={b.id}
             onClick={() => setOnly(b.id)}
-            className={cx("flex items-center gap-1.5 rounded-[10px] border px-2.5 py-1.5 text-sm", only === b.id ? "border-transparent bg-side font-medium" : "border-line")}
+            className={cx("flex items-center gap-1.5 rounded-lg border px-2.5 py-1.5 text-sm", only === b.id ? "border-transparent bg-side font-medium" : "border-line")}
           >
             <BrandTile id={b.id} size={18} /> {b.name}
           </button>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowUpRight, Instagram, RefreshCw } from "lucide-react";
+import { ArrowUpRight, RefreshCw } from "lucide-react";
 import { Button, Card, NotHooked, PlatformIcon, cx } from "@/components/ui";
 
 const plan = [
@@ -18,10 +18,10 @@ export default function WarmUpPage() {
 
   return (
     <div>
-      <h1 className="mb-5 text-[28px] font-semibold tracking-tight">Warm-up</h1>
+      <h1 className="mb-5 text-2xl font-semibold tracking-[-0.01em]">Warm-up</h1>
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <span className="flex items-center gap-2 text-[15px]">
-          <Instagram size={20} className="text-[#E1306C]" />
+          <PlatformIcon p="instagram" size={20} />
           <PlatformIcon p="tiktok" size={20} /> Works on Instagram and TikTok
         </span>
         <Button variant="primary" onClick={() => setChecked(true)}>
@@ -63,7 +63,7 @@ export default function WarmUpPage() {
                 type="checkbox"
                 checked={done.includes(i)}
                 onChange={() => setDone((d) => (d.includes(i) ? d.filter((x) => x !== i) : [...d, i]))}
-                className="mt-0.5 h-4 w-4 accent-[#4DB6A0]"
+                className="mt-0.5 h-4 w-4 accent-[#00BDAB]"
               />
               <span className="w-16 shrink-0 font-semibold">{p.day}</span>
               <span className={cx(done.includes(i) && "text-muted line-through")}>{p.task}</span>

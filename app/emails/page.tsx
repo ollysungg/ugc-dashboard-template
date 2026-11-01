@@ -22,7 +22,7 @@ export default function EmailsPage() {
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
-        <h1 className="text-[28px] font-semibold tracking-tight">Emails</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">Emails</h1>
         <Button variant="primary" onClick={() => setList((l) => [{ address: `alex-${rand()}@${DOMAIN}`, note: "", created: "just now" }, ...l])}>
           <Plus size={16} /> Generate email
         </Button>
@@ -60,7 +60,7 @@ export default function EmailsPage() {
                 {open === e.address && (
                   <input
                     defaultValue={e.note}
-                    placeholder="what is it for? e.g. TikTok. Glowly"
+                    placeholder="what is it for? e.g. TikTok. Liftoff"
                     onChange={(ev) => setList((l) => l.map((x) => (x.address === e.address ? { ...x, note: ev.target.value } : x)))}
                     className="mt-2 w-full rounded-lg border border-line px-2.5 py-1.5 text-sm outline-none"
                   />

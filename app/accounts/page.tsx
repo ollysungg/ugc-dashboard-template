@@ -20,7 +20,7 @@ export default function AccountsPage() {
     <div>
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex flex-wrap items-baseline gap-3">
-          <h1 className="text-[28px] font-semibold tracking-tight">Accounts</h1>
+          <h1 className="text-2xl font-semibold tracking-[-0.01em]">Accounts</h1>
           <span className="text-sm text-muted">
             {accounts.length} accounts · <span className="text-[#2E7D46]">{connected} connected to the scheduler</span>
           </span>
@@ -43,11 +43,11 @@ export default function AccountsPage() {
       <div className="grid gap-4 md:grid-cols-[270px_1fr]">
         <Card className="h-fit p-3">
           <div className="mb-2 px-1 font-semibold">Brand deals</div>
-          <label className="mb-2 flex items-center gap-2 rounded-[10px] border border-line px-3 py-2 text-sm">
+          <label className="mb-2 flex items-center gap-2 rounded-lg border border-line px-3 py-2 text-sm">
             <Search size={15} className="text-muted" />
             <input value={q} onChange={(e) => setQ(e.target.value)} placeholder="search accounts" className="w-full outline-none" />
           </label>
-          <div className="mb-2 flex gap-1 rounded-[10px] bg-side p-1">
+          <div className="mb-2 flex gap-1 rounded-lg bg-side p-1">
             {filters.map((f) => (
               <button key={f} onClick={() => setPlat(f)} className={cx("flex flex-1 items-center justify-center rounded-lg py-1 text-sm", plat === f && "bg-white shadow-sm")}>
                 {f === "all" ? "all" : <PlatformIcon p={f} />}

@@ -21,16 +21,15 @@ export default function VariationsPage() {
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
-        <h1 className="text-[28px] font-semibold tracking-tight">Variations</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">Variations</h1>
         <Button variant="primary">New brand</Button>
       </div>
 
       <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
         {brands.map((b) => (
           <button key={b.id} onClick={() => (setOpen(b.id), setMade(false))} className="overflow-hidden rounded-card border border-line text-left transition hover:shadow-md">
-            <div className="flex aspect-[5/4] items-center justify-center text-5xl font-semibold text-white" style={{ background: b.color }}>
-              {b.name[0]}
-            </div>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={b.logo} alt="" className="aspect-[5/4] w-full object-cover" />
             <div className="px-3 py-2.5 text-[15px] font-medium">{b.name}</div>
           </button>
         ))}
@@ -87,7 +86,7 @@ export default function VariationsPage() {
               </div>
               <div className="my-4 flex items-center justify-between text-sm">
                 How many
-                <input type="range" min={2} max={10} value={count} onChange={(e) => setCount(+e.target.value)} className="mx-3 flex-1 accent-[#4DB6A0]" />
+                <input type="range" min={2} max={10} value={count} onChange={(e) => setCount(+e.target.value)} className="mx-3 flex-1 accent-[#00BDAB]" />
                 <b>{count}</b>
               </div>
               <Button variant="primary" className="w-full" onClick={() => setMade(true)}>

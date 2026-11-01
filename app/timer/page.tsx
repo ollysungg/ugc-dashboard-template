@@ -63,7 +63,7 @@ export default function TimerPage() {
   return (
     <div>
       <div className="mb-5 flex items-center justify-between">
-        <h1 className="text-[28px] font-semibold tracking-tight">Timer</h1>
+        <h1 className="text-2xl font-semibold tracking-[-0.01em]">Timer</h1>
         <Button
           onClick={() => {
             setTimes({});

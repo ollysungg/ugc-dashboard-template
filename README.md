@@ -35,7 +35,8 @@ npm run dev
 Open http://localhost:3000.
 
 ## make it yours
-- name + logo: `components/shell.tsx` (`Your Brand`, `Logo`)
+- name + logo: `components/shell.tsx` (`Velocity Creators`, `Logo`)
+- campaign logos: `public/brands`
 - colours: `tailwind.config.ts` (`brand`)
 - data: `lib/mock.ts`
 
