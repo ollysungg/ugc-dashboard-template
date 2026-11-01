@@ -1,5 +1,7 @@
 # UGC creator dashboard (free template)
 
+Live demo: https://ugc-dashboard-template.vercel.app
+
 A dashboard for UGC creators: money calendar, campaigns, ideation, film, editing,
 scheduler, variations, accounts, transcribe, emails, warm-up and a batch timer.
 
